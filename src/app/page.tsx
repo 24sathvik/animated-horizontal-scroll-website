@@ -13,20 +13,22 @@ import SmoothTransitionsProvider from '@/components/animations/smooth-transition
 import LoadingAnimation from '@/components/loading-animation';
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [showContent, setShowContent] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showContent, setShowContent] = useState(true);
 
   useEffect(() => {
-    // Check if user has visited before or came from Work link
-    const hasVisited = sessionStorage.getItem('hasVisited');
+    // Check if should show loading animation
+    const shouldShowLoading = sessionStorage.getItem('showLoading');
     const skipLoading = sessionStorage.getItem('skipLoading');
     
-    if (hasVisited === 'true' || skipLoading === 'true') {
-      setIsLoading(false);
-      setShowContent(true);
+    if (shouldShowLoading === 'true' && skipLoading !== 'true') {
+      setIsLoading(true);
+      setShowContent(false);
+      sessionStorage.removeItem('showLoading');
+    }
+    
+    if (skipLoading === 'true') {
       sessionStorage.removeItem('skipLoading');
-    } else {
-      sessionStorage.setItem('hasVisited', 'true');
     }
   }, []);
 

@@ -4,6 +4,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const Header: React.FC = () => {
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    // Set flag to show loading animation
+    sessionStorage.setItem('showLoading', 'true');
+    window.location.href = '/';
+  };
+
   const handleWorkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     // Set flag to skip loading animation when navigating to Work section
     sessionStorage.setItem('skipLoading', 'true');
@@ -13,9 +20,9 @@ const Header: React.FC = () => {
     <header className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 smooth-transition hover:opacity-80">
+        <a href="/" onClick={handleLogoClick} className="flex items-center gap-2 smooth-transition hover:opacity-80">
           <Image
-            src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/1a995666-d28e-47d3-94a2-4468b330f1b8-zyxen-web-vercel-app/assets/icons/logo-1.png"
+            src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/logo-1764241287598.png"
             alt="ZYXEN Logo"
             width={32}
             height={32}
