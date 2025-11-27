@@ -246,6 +246,20 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
+
+  /* Work Gallery Continuous Scroll Animation */
+  @keyframes work-gallery-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .work-gallery-scroll {
+    animation: work-gallery-scroll 40s linear infinite;
+  }
 }
 
 /* Hide Next.js error overlay portal */
