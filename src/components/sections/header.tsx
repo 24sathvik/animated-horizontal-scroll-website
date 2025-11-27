@@ -15,11 +15,11 @@ const Header: React.FC = () => {
         {/* Logo */}
         <a href="/" className="flex items-center gap-2 smooth-transition hover:opacity-80">
           <Image
-            src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/logo-1764251607419.png"
+            src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/1a995666-d28e-47d3-94a2-4468b330f1b8-zyxen-web-vercel-app/assets/icons/logo-1.png"
             alt="ZYXEN Logo"
-            width={40}
-            height={40}
-            className="w-10 h-10 object-contain"
+            width={32}
+            height={32}
+            className="w-8 h-8 object-contain"
           />
           <span className="text-logo text-white font-bold">ZYXEN</span>
         </a>
