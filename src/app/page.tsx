@@ -17,19 +17,33 @@ export default function Home() {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    // Check if this is the first visit
+    // Check if loading animation should be shown
+    const showLoading = sessionStorage.getItem('showLoading');
+    const skipLoading = sessionStorage.getItem('skipLoading');
     const hasVisited = sessionStorage.getItem('hasVisitedZyxen');
     
-    // Show loading animation only on first visit or when explicitly triggered
-    if (!hasVisited) {
+    // Show loading animation if:
+    // 1. User clicked ZYXEN logo (showLoading flag)
+    // 2. First visit and not skipping
+    if (showLoading === 'true') {
       setIsLoading(true);
       setShowContent(false);
-      // Mark as visited
+      // Clear the flag
+      sessionStorage.removeItem('showLoading');
+      sessionStorage.setItem('hasVisitedZyxen', 'true');
+    } else if (!hasVisited && skipLoading !== 'true') {
+      setIsLoading(true);
+      setShowContent(false);
       sessionStorage.setItem('hasVisitedZyxen', 'true');
     } else {
-      // Skip animation on subsequent visits
+      // Skip animation
       setIsLoading(false);
       setShowContent(true);
+    }
+    
+    // Clear skipLoading flag if present
+    if (skipLoading === 'true') {
+      sessionStorage.removeItem('skipLoading');
     }
   }, []);
 
