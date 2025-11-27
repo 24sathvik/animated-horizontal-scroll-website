@@ -13,22 +13,23 @@ import SmoothTransitionsProvider from '@/components/animations/smooth-transition
 import LoadingAnimation from '@/components/loading-animation';
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [showContent, setShowContent] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    // Check if should show loading animation
-    const shouldShowLoading = sessionStorage.getItem('showLoading');
-    const skipLoading = sessionStorage.getItem('skipLoading');
+    // Check if this is the first visit
+    const hasVisited = sessionStorage.getItem('hasVisitedZyxen');
     
-    if (shouldShowLoading === 'true' && skipLoading !== 'true') {
+    // Show loading animation only on first visit or when explicitly triggered
+    if (!hasVisited) {
       setIsLoading(true);
       setShowContent(false);
-      sessionStorage.removeItem('showLoading');
-    }
-    
-    if (skipLoading === 'true') {
-      sessionStorage.removeItem('skipLoading');
+      // Mark as visited
+      sessionStorage.setItem('hasVisitedZyxen', 'true');
+    } else {
+      // Skip animation on subsequent visits
+      setIsLoading(false);
+      setShowContent(true);
     }
   }, []);
 
