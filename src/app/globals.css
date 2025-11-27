@@ -258,7 +258,7 @@
   }
 
   .work-gallery-scroll {
-    animation: work-gallery-scroll 40s linear infinite;
+    animation: work-gallery-scroll 30s linear infinite;
   }
 }
 

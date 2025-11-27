@@ -69,17 +69,9 @@ const WorkGallerySection: React.FC = () => {
                   <h3 className="text-2xl font-bold text-white mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     {project.title}
                   </h3>
-                  <p className="text-gray-300 mb-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                  <p className="text-gray-300 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
                     {project.description}
                   </p>
-                  <div className="flex gap-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
-                    <span className="px-4 py-2 bg-purple-600/80 rounded-md text-sm text-white">
-                      AI-Powered
-                    </span>
-                    <span className="px-4 py-2 bg-slate-700/80 rounded-md text-sm text-white">
-                      2024
-                    </span>
-                  </div>
                 </div>
 
                 {/* Subtle shine effect on hover */}
